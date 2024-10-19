@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 3,
-  "iteration": 1729361793065,
+  "iteration": 1729369833324,
   "links": [],
   "panels": [
     {
@@ -212,6 +212,104 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "prometheus-metrics",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "hiddenSeries": false,
+      "id": 5,
+      "interval": "1m",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(increase(pendencias_transacionais{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m])) by (tipo_origem, tipo_pendencia)",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{tipo_origem}}-{{tipo_pendencia}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Pendencias",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": false,
@@ -256,9 +354,18 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "RfTerceiro",
-          "value": "RfTerceiro"
+          "selected": true,
+          "tags": [],
+          "text": [
+            "RfTerceiro",
+            "Fundos",
+            "Previdencia"
+          ],
+          "value": [
+            "RfTerceiro",
+            "Fundos",
+            "Previdencia"
+          ]
         },
         "datasource": "prometheus-metrics",
         "definition": "label_values(BoletasCriadas, tipoBoleta)",
@@ -279,6 +386,40 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": "Todos",
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "Simulacao",
+            "Efetivacao"
+          ],
+          "value": [
+            "Simulacao",
+            "Efetivacao"
+          ]
+        },
+        "datasource": "prometheus-metrics",
+        "definition": "label_values(pendencias_transacionais, tipo_origem)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Origem Pendencia",
+        "multi": true,
+        "name": "origem_pendencia",
+        "options": [],
+        "query": "label_values(pendencias_transacionais, tipo_origem)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -290,5 +431,5 @@
   "timezone": "",
   "title": "Metricas Negocio",
   "uid": "t3R4BYmHk",
-  "version": 27
+  "version": 32
 }

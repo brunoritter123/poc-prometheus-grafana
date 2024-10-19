@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Prometheus;
+using TestePrometheusGrafana.Boleta;
 
 namespace TestePrometheusGrafana.Controllers
 {
@@ -17,15 +18,15 @@ namespace TestePrometheusGrafana.Controllers
         }
 
         [HttpGet(Name = "GetBoleta")]
-        public IEnumerable<Boleta> Get()
+        public IEnumerable<BoletaModel> Get()
         {
             return _boletaRepository.Get();
         }
 
         [HttpPost(Name = "PostBoleta")]
-        public Boleta Post()
+        public BoletaModel Post()
         {
-            var body = Boleta.CreateFaker();
+            var body = BoletaModel.CreateFaker();
             _boletaRepository.Inserir(body);
             return body;
         }

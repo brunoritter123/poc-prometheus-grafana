@@ -1,8 +1,8 @@
 using Bogus;
 
-namespace TestePrometheusGrafana;
+namespace TestePrometheusGrafana.Boleta;
 
-public class Boleta
+public class BoletaModel
 {
     public Guid Id { get; set; }
     public DateTime Data { get; set; }
@@ -12,9 +12,9 @@ public class Boleta
     public TipoBoletaEnum TipoBoleta { get; set; }
     public CanalEnum TipoCanal { get; set; }
 
-    public static Boleta CreateFaker()
+    public static BoletaModel CreateFaker()
     {
-        return new Faker<Boleta>("pt_BR")
+        return new Faker<BoletaModel>("pt_BR")
             .RuleFor(x => x.Id, Guid.NewGuid())
             .RuleFor(x => x.Data, f => f.Date.Between(DateTime.Now, DateTime.Now.AddDays(1)))
             .RuleFor(x => x.Valor, f => f.Finance.Amount())
@@ -45,7 +45,7 @@ public class Boleta
 
 public enum TipoBoletaEnum
 {
-    Fundos=1,
+    Fundos = 1,
     RfTerceiro,
     Previdencia
 }

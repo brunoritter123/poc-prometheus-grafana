@@ -1,5 +1,7 @@
 using Prometheus;
 using TestePrometheusGrafana;
+using TestePrometheusGrafana.Boleta;
+using TestePrometheusGrafana.Efetivacao;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IBoletaRepository, BoletaRepository>();
+builder.Services.AddSingleton<IEfetivacaoRepository, EfetivacaoRepository>();
 builder.Services.AddHostedService<Worker>();
 
 var app = builder.Build();
