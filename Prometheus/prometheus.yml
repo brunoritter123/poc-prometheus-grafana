@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "teste-prometheus-grafana-job"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["172.18.18.10:8080"]

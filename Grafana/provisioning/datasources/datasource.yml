@@ -1,0 +1,10 @@
+# config file version
+apiVersion: 1
+
+datasources:
+  - name: prometheus-metrics
+    editable: true
+    type: prometheus
+    access: proxy
+    url: http://172.18.18.11:9090/
+    isDefault: true
