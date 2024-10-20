@@ -16,202 +16,436 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 3,
-  "iteration": 1729369833324,
+  "iteration": 1729445229387,
   "links": [],
   "panels": [
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "prometheus-metrics",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 1
+          },
+          "hiddenSeries": false,
+          "id": 2,
+          "interval": "1m",
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(increase(BoletasCriadas{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\"}[1m])) by (tipoBoleta, tipoCanal)",
+              "format": "time_series",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{tipoCanal}}-{{tipoBoleta}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Quantidade Boletas",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 12,
+            "y": 1
+          },
+          "hiddenSeries": false,
+          "id": 4,
+          "interval": "1m",
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(increase(ValorBoletasCriadas{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\"}[1m])) by (tipoBoleta, tipoCanal)",
+              "interval": "",
+              "legendFormat": "{{tipoCanal}}-{{tipoBoleta}}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "R$ Movimentado",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Boletas Movimentações",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 10,
+      "panels": [],
+      "title": "Saúde Trasacional",
+      "type": "row"
+    },
+    {
       "datasource": "prometheus-metrics",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "%"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 2
       },
-      "hiddenSeries": false,
-      "id": 2,
+      "id": 6,
       "interval": "1m",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
       },
-      "percentage": false,
       "pluginVersion": "7.3.1",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(increase(BoletasCriadas{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\"}[1m])) by (tipoBoleta, tipoCanal)",
+          "expr": "sum (rate(pendencias_transacionais{tipo_pendencia=\"Informativa\", tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m]))/sum (rate(pendencias_transacionais{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m])) * 100",
           "format": "time_series",
+          "hide": false,
           "instant": false,
           "interval": "",
-          "legendFormat": "{{tipoCanal}}-{{tipoBoleta}}",
+          "legendFormat": "Informativa",
           "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Quantidade Boletas",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
         },
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "expr": "sum (rate(pendencias_transacionais{tipo_pendencia=\"Impeditiva\", tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m]))/sum (rate(pendencias_transacionais{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m])) * 100",
+          "interval": "",
+          "legendFormat": "Impeditiva",
+          "refId": "B"
+        },
+        {
+          "expr": "sum (rate(pendencias_transacionais{tipo_pendencia=\"Falha\", tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m]))/sum (rate(pendencias_transacionais{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m])) * 100",
+          "interval": "",
+          "legendFormat": "Falha",
+          "refId": "C"
+        },
+        {
+          "expr": "sum (rate(pendencias_transacionais{tipo_pendencia=\"Ok\", tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m]))/sum (rate(pendencias_transacionais{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m])) * 100",
+          "format": "time_series",
+          "hide": true,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Ok",
+          "refId": "D"
         }
       ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Pendencias",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Informativa",
+                "Impeditiva",
+                "Falha"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "stat"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
+      "datasource": "prometheus-metrics",
+      "description": "",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "align": "right",
+            "displayMode": "auto",
+            "filterable": false
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "",
+              "to": "",
+              "type": 1,
+              "value": ""
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 100
+              }
+            ]
+          },
+          "unit": "none"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 2
       },
-      "hiddenSeries": false,
-      "id": 4,
+      "id": 11,
       "interval": "1m",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "frameIndex": 1,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Value"
+          }
+        ]
       },
-      "percentage": false,
       "pluginVersion": "7.3.1",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(increase(ValorBoletasCriadas{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\"}[1m])) by (tipoBoleta, tipoCanal)",
+          "expr": "topk(3, sum(increase(pendencias_transacionais{tipo_pendencia=\"Falha\",tipoCanal=~\"$canal\", tipo_origem=~\"$origem_pendencia\"}[$__range])) by (tipoBoleta))\n",
+          "format": "table",
+          "hide": false,
+          "instant": true,
           "interval": "",
-          "legendFormat": "{{tipoCanal}}-{{tipoBoleta}}",
+          "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
-      "title": "R$ Movimentado",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
+      "title": "Top Produtos Falha",
+      "transformations": [
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "tipoBoleta",
+                "Value"
+              ]
+            }
+          }
         },
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value": "Falhas",
+              "tipoBoleta": "Tipo Boleta"
+            }
+          }
         }
       ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "table"
     },
     {
       "aliasColors": {},
@@ -231,7 +465,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 11
       },
       "hiddenSeries": false,
       "id": 5,
@@ -262,7 +496,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(increase(pendencias_transacionais{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\"}[1m])) by (tipo_origem, tipo_pendencia)",
+          "expr": "sum(increase(pendencias_exibidas{tipoCanal=~\"$canal\", tipoBoleta=~\"$tipo_produto\", tipo_origem=~\"$origem_pendencia\", tipo_pendencia!=\"Ok\"}[1m])) by (tipo_origem, tipo_pendencia)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -312,7 +546,7 @@
       }
     }
   ],
-  "refresh": false,
+  "refresh": "",
   "schemaVersion": 26,
   "style": "dark",
   "tags": [],
@@ -322,6 +556,7 @@
         "allValue": "Todos",
         "current": {
           "selected": true,
+          "tags": [],
           "text": [
             "ION",
             "IFA"
@@ -357,13 +592,9 @@
           "selected": true,
           "tags": [],
           "text": [
-            "RfTerceiro",
-            "Fundos",
             "Previdencia"
           ],
           "value": [
-            "RfTerceiro",
-            "Fundos",
             "Previdencia"
           ]
         },
@@ -424,12 +655,12 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Metricas Negocio",
   "uid": "t3R4BYmHk",
-  "version": 32
+  "version": 51
 }

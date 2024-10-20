@@ -8,9 +8,9 @@ public class MetricsEfetivacaoPrometheus
 {
     private readonly CounterConfiguration Tags;
 
-    private readonly Counter CounterEfetivacaosCriadas;
+    private readonly Counter CounterResultadoSimulacaoEfetivacao;
 
-    private readonly Counter CounterValorEfetivacaosCriadas;
+    private readonly Counter CounterPendenciasExibidas;
 
     public MetricsEfetivacaoPrometheus()
     {
@@ -19,8 +19,13 @@ public class MetricsEfetivacaoPrometheus
             LabelNames = ["tipoBoleta", "tipoCanal", "tipo_pendencia", "tipo_origem"],
         };
 
-        CounterEfetivacaosCriadas = Metrics.CreateCounter(name: "pendencias_transacionais",
-                                       help: "Conta o resultado de simulações e efetivações",
+        CounterResultadoSimulacaoEfetivacao = Metrics.CreateCounter(name: "pendencias_transacionais",
+                                       help: "Conta o resultado das simulações e efetivações",
+                                       configuration: Tags);
+
+
+        CounterPendenciasExibidas= Metrics.CreateCounter(name: "pendencias_exibidas",
+                                       help: "Conta as pendêcias exibidas para o usuário",
                                        configuration: Tags);
     }
 
@@ -29,9 +34,20 @@ public class MetricsEfetivacaoPrometheus
                                            TipoOrigemEnum tipoOrigem,
                                            List<PendenciaModel> pendencias)
     {
+        foreach (var pendencia in pendencias)
+        {
+            CounterPendenciasExibidas
+            .WithLabels(
+                tipoEfetivacao.ToString(),
+                tipoCanal.ToString(),
+                pendencia.TipoPendencia.ToString(),
+                tipoOrigem.ToString())
+            .Inc();
+        }
+
         if (!pendencias.Any())
         {
-            CounterEfetivacaosCriadas
+            CounterResultadoSimulacaoEfetivacao
             .WithLabels(
                 tipoEfetivacao.ToString(),
                 tipoCanal.ToString(),
@@ -41,13 +57,36 @@ public class MetricsEfetivacaoPrometheus
 
             return;
         }
-        foreach (var pendencia in pendencias)
+        
+        if (pendencias.Any(x => x.TipoPendencia == TipoPendenciaEnum.Falha))
         {
-            CounterEfetivacaosCriadas
+            CounterResultadoSimulacaoEfetivacao
             .WithLabels(
                 tipoEfetivacao.ToString(),
                 tipoCanal.ToString(),
-                pendencia.TipoPendencia.ToString(),
+                TipoPendenciaEnum.Falha.ToString(),
+                tipoOrigem.ToString())
+            .Inc();
+        }
+
+        if (pendencias.Any(x => x.TipoPendencia == TipoPendenciaEnum.Impeditiva))
+        {
+            CounterResultadoSimulacaoEfetivacao
+            .WithLabels(
+                tipoEfetivacao.ToString(),
+                tipoCanal.ToString(),
+                TipoPendenciaEnum.Impeditiva.ToString(),
+                tipoOrigem.ToString())
+            .Inc();
+        }
+
+        if (pendencias.Any(x => x.TipoPendencia == TipoPendenciaEnum.Informativa))
+        {
+            CounterResultadoSimulacaoEfetivacao
+            .WithLabels(
+                tipoEfetivacao.ToString(),
+                tipoCanal.ToString(),
+                TipoPendenciaEnum.Informativa.ToString(),
                 tipoOrigem.ToString())
             .Inc();
         }

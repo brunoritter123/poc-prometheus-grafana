@@ -21,3 +21,9 @@ Re-criar container da api com as atualizações do projeto
 ```bash
 podman compose --file docker-compose.yml up --detach --build api
 ```
+
+topk(3,
+  sum(rate(pendencias_transacionais{tipo_pendencia="Falha", tipoCanal=~"$canal", tipoBoleta=~"$tipo_produto", tipo_origem=~"$origem_pendencia"}[1m])) by (tipo_produto)
+  /
+  sum(rate(pendencias_transacionais{tipoCanal=~"$canal", tipoBoleta=~"$tipo_produto", tipo_origem=~"$origem_pendencia"}[1m])) by (tipo_produto)
+)
