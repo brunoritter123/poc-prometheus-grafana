@@ -12,6 +12,22 @@ PromQl simples de um Counter
 Consulta utilizando váriaveis do grafa
 - `sum(increase(BoletasCriadas{tipoCanal=~"$canal", tipoBoleta=~"$tipo_produto"}[1m])) by (tipoBoleta, tipoCanal)`
 
+Consulta tipo table exemplo:
+- `topk(3, sum(increase(pendencias_transacionais{tipo_pendencia="Falha",tipoCanal=~"$canal", tipo_origem=~"$origem_pendencia"}[$__range])) by (tipoBoleta))`
+![dash_table](./imgs/dash_table.png)
+
+Consulta tipo percentual de um total:
+- `sum (rate(pendencias_transacionais{tipo_pendencia="Informativa", tipoCanal=~"$canal", tipoBoleta=~"$tipo_produto", tipo_origem=~"$origem_pendencia"}[1m]))/sum (rate(pendencias_transacionais{tipoCanal=~"$canal", tipoBoleta=~"$tipo_produto", tipo_origem=~"$origem_pendencia"}[1m])) * 100`
+![dash_perc](./imgs/dash_perc.png)
+
+Consulta tipo totais:
+- `sum(increase(pendencias_exibidas{tipoCanal=~"$canal", tipoBoleta=~"$tipo_produto", tipo_origem=~"$origem_pendencia", tipo_pendencia!="Ok"}[1m])) by (tipo_origem, tipo_pendencia)`
+![dash_total_pendencia](imgs/dash_total_pendencia.png)
+
+Criação de variavel com valores dinamicos:
+- `label_values(BoletasCriadas, tipoBoleta)`
+![create_var](imgs/create_var.png)
+
 Subir compose inteiro
 ```bash
 podman compose --file docker-compose.yml up --detach
