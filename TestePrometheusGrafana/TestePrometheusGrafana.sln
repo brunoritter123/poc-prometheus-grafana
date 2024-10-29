@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestePrometheusGrafana", "TestePrometheusGrafana\TestePrometheusGrafana.csproj", "{2C75337F-AD52-4AFB-A79F-22A34C0C335F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{1C443B4B-CE41-458B-AFE7-E2B2EE9E29B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2C75337F-AD52-4AFB-A79F-22A34C0C335F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C75337F-AD52-4AFB-A79F-22A34C0C335F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C75337F-AD52-4AFB-A79F-22A34C0C335F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C443B4B-CE41-458B-AFE7-E2B2EE9E29B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C443B4B-CE41-458B-AFE7-E2B2EE9E29B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C443B4B-CE41-458B-AFE7-E2B2EE9E29B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C443B4B-CE41-458B-AFE7-E2B2EE9E29B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

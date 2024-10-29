@@ -1,4 +1,5 @@
 using Prometheus;
+using Prometheus.HttpMetrics;
 using TestePrometheusGrafana;
 using TestePrometheusGrafana.Boleta;
 using TestePrometheusGrafana.Efetivacao;
@@ -11,6 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.UseHttpClientMetrics();
 
 builder.Services.AddSingleton<IBoletaRepository, BoletaRepository>();
 builder.Services.AddSingleton<IEfetivacaoRepository, EfetivacaoRepository>();
@@ -25,7 +28,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseMetricServer();
+app.UseMetricServer(options => options.EnableOpenMetrics = false);
 app.UseHttpMetrics();
 
 app.UseHttpsRedirection();

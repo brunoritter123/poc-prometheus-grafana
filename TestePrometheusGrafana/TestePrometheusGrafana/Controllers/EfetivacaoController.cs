@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Prometheus;
-using TestePrometheusGrafana.Boleta;
 using TestePrometheusGrafana.Efetivacao;
 
 namespace TestePrometheusGrafana.Controllers
@@ -9,10 +7,10 @@ namespace TestePrometheusGrafana.Controllers
     [Route("[controller]")]
     public class EfetivacaoController : ControllerBase
     {
-        private readonly ILogger<BoletaController> _logger;
+        private readonly ILogger<EfetivacaoController> _logger;
         private readonly IEfetivacaoRepository _efetivacaoRepository;
 
-        public EfetivacaoController(ILogger<BoletaController> logger,
+        public EfetivacaoController(ILogger<EfetivacaoController> logger,
                                 IEfetivacaoRepository efetivacaoRepository)
         {
             _logger = logger;
@@ -20,16 +18,19 @@ namespace TestePrometheusGrafana.Controllers
         }
 
         [HttpGet(Name = "GetEfetivacoes")]
-        public IEnumerable<EfetivacaoModel> Get()
+        public IEnumerable<EfetivacaoModel> Get([FromQuery] int statuscode = 200)
         {
+            Response.StatusCode = statuscode;
             return _efetivacaoRepository.Get();
         }
 
         [HttpPost(Name = "PostEfetivacao")]
-        public EfetivacaoModel Post()
+        public EfetivacaoModel Post([FromQuery] int statuscode = 200)
         {
             var body = EfetivacaoModel.CreateFaker();
             _efetivacaoRepository.Inserir(body);
+
+            Response.StatusCode = statuscode;
             return body;
         }
     }
