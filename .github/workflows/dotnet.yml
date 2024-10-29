@@ -22,6 +22,8 @@ jobs:
         dotnet-version: 8.0.x
     - name: Entrando na pasta da solution
       run: cd TestePrometheusGrafana
+    - name: listando arquivos
+      run: ls
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
