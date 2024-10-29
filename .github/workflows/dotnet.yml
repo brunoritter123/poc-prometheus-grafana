@@ -21,7 +21,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Entrando na pasta da solution
-      run: cd TestePrometheusGrafana
+      run: cd .\TestePrometheusGrafana
     - name: listando arquivos
       run: ls
     - name: Restore dependencies
