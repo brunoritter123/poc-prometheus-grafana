@@ -24,6 +24,8 @@ jobs:
       run: ls
     - name: Entrando na pasta da solution
       run: cd TestePrometheusGrafana
+    - name: listando arquivos 2
+      run: ls
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
