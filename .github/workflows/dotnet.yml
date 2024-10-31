@@ -15,8 +15,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        path: TestePrometheusGrafana
+
+    - name: Configurar diretório de trabalho
+      run: echo "Diretório de trabalho configurado"
+      working-directory: ./TestePrometheusGrafana
 
     # - name: Checkout Repositório do Projeto .Net
     #   uses: actions/checkout@v4
