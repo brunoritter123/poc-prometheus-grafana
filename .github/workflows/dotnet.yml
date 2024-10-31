@@ -16,15 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Configurar diretório de trabalho
-      run: echo "Diretório de trabalho configurado"
-      working-directory: ./TestePrometheusGrafana
-
-    # - name: Checkout Repositório do Projeto .Net
-    #   uses: actions/checkout@v4
-    #   with:
-    #     repository: TestePrometheusGrafana
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -32,9 +23,12 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: ./TestePrometheusGrafana
 
     - name: Build
       run: dotnet build --no-restore
+      working-directory: ./TestePrometheusGrafana
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: ./TestePrometheusGrafana
