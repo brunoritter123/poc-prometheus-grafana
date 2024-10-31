@@ -20,10 +20,10 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Entrando na pasta da solution
-      run: cd .\TestePrometheusGrafana
     - name: listando arquivos
       run: ls
+    - name: Entrando na pasta da solution
+      run: cd TestePrometheusGrafana
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
