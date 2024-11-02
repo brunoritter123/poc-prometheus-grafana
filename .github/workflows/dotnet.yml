@@ -25,6 +25,13 @@ jobs:
       run: dotnet restore
       working-directory: ./TestePrometheusGrafana
 
+  call-workflow-passing-data:
+    uses: brunoritter123/workflows/.github/workflows/valida-dependencias.yml@main
+    with:
+      config-path: BFF
+    # secrets:
+    #   personal_access_token: ${{ secrets.token }}
+
     # - name: Restore dependencies
     #   run: dotnet restore
     #   working-directory: ./TestePrometheusGrafana
