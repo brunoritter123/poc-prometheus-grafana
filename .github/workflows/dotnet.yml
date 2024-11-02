@@ -17,12 +17,13 @@ jobs:
     - uses: actions/checkout@v4
 
   call-workflow-passing-data:
+    name: Valida dependencias
     uses: brunoritter123/workflows/.github/workflows/valida-dependencias.yml@main
     with:
       tipo-projeto: BFF
       diretorio-sln: "TestePrometheusGrafana"
     secrets:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Passa o token de acesso para permitir o checkout do repositório do workflow reutilizável
+      GH_TOKEN: ${{secrets.GITHUB_TOKEN}}  # Passa o token de acesso para permitir o checkout do repositório do workflow reutilizável
     # secrets:
     #   personal_access_token: ${{ secrets.token }}
 
