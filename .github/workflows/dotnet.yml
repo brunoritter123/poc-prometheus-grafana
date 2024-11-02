@@ -28,7 +28,7 @@ jobs:
   call-workflow-passing-data:
     uses: brunoritter123/workflows/.github/workflows/valida-dependencias.yml@main
     with:
-      config-path: BFF
+      tipo-projeto: BFF
     # secrets:
     #   personal_access_token: ${{ secrets.token }}
 
