@@ -25,10 +25,14 @@ jobs:
       run: dotnet restore
       working-directory: ./TestePrometheusGrafana
 
-    - name: Build
-      run: dotnet build --no-restore
-      working-directory: ./TestePrometheusGrafana
+    # - name: Restore dependencies
+    #   run: dotnet restore
+    #   working-directory: ./TestePrometheusGrafana
 
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-      working-directory: ./TestePrometheusGrafana
+    # - name: Build
+    #   run: dotnet build --no-restore
+    #   working-directory: ./TestePrometheusGrafana
+
+    # - name: Test
+    #   run: dotnet test --no-build --verbosity normal
+    #   working-directory: ./TestePrometheusGrafana

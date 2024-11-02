@@ -43,3 +43,9 @@ topk(3,
   /
   sum(rate(pendencias_transacionais{tipoCanal=~"$canal", tipoBoleta=~"$tipo_produto", tipo_origem=~"$origem_pendencia"}[1m])) by (tipo_produto)
 )
+
+Lista pacotes desatualizados:
+dotnet list package --outdated --format json
+
+Lista pacotes para analise se está configurado as libs necessárias
+dotnet list package --format json
