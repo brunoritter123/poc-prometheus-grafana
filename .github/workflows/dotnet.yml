@@ -16,19 +16,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-
-    - name: Restore dependencies
-      run: dotnet restore
-      working-directory: ./TestePrometheusGrafana
-
   call-workflow-passing-data:
     uses: brunoritter123/workflows/.github/workflows/valida-dependencias.yml@main
     with:
       tipo-projeto: BFF
+      diretorio-sln: "./TestePrometheusGrafana"
     # secrets:
     #   personal_access_token: ${{ secrets.token }}
 
