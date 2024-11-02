@@ -20,7 +20,7 @@ jobs:
     uses: brunoritter123/workflows/.github/workflows/valida-dependencias.yml@main
     with:
       tipo-projeto: BFF
-      diretorio-sln: "./TestePrometheusGrafana"
+      diretorio-sln: "TestePrometheusGrafana"
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Passa o token de acesso para permitir o checkout do repositório do workflow reutilizável
     # secrets:
