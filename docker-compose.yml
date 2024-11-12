@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   api:
     build:
@@ -7,6 +7,8 @@ services:
       args:
         version: 1
     image: teste-prometheus-grafana-metrics
+    depends_on:
+      - mysql-local
     ports:
       - 8888:8080
     networks:
@@ -26,7 +28,7 @@ services:
       network:
         ipv4_address: 172.18.18.11
     volumes:
-      - './prometheus/data:/data'
+      - './Prometheus/data:/data:Z'
   grafana:
     build:
       context: ./Grafana
@@ -40,6 +42,22 @@ services:
     networks:
       network:
         ipv4_address: 172.18.18.12
+  mysql-local:
+    build:
+      context: ./Mysql
+      dockerfile: Dockerfile
+      args:
+        version: 1
+    image: mysql-local
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - './Mysql/dbmysql-volume:/var/lib/mysql:Z'
+    restart: always
+    ports:
+      - 3306:3306
+    networks:
+      network:
+        ipv4_address: 172.18.18.13
 
 networks:
   network:

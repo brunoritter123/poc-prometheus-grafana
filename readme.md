@@ -30,12 +30,12 @@ Criação de variavel com valores dinamicos:
 
 Subir compose inteiro
 ```bash
-podman compose --file docker-compose.yml up --detach
+podman-compose --file docker-compose.yml up --detach
 ```
 
 Re-criar container da api com as atualizações do projeto
 ```bash
-podman compose --file docker-compose.yml up --detach --build api
+podman-compose --file docker-compose.yml up --detach --build api
 ```
 
 topk(3,

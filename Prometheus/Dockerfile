@@ -1,4 +1,4 @@
-FROM prom/prometheus:v2.17.1 as image-prometheus-base
+FROM prom/prometheus:v2.55.1 as image-prometheus-base
 COPY ./prometheus.yml /etc/prometheus
 
 VOLUME ./data
